@@ -9,10 +9,11 @@
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules" : ["cocos2d", "particle", "ccpool", "ccbreader"],
 
     "jsList" : [
         "src/resource.js",
+        "src/scene/MenuScene.js",
         "src/app.js"
     ]
 }

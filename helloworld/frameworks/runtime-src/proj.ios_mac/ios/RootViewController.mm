@@ -43,8 +43,16 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
     // Initialize the CCEAGLView
+//    CCEAGLView *eaglView = [CCEAGLView viewWithFrame: [UIScreen mainScreen].bounds
+//                                         pixelFormat: (__bridge NSString *)cocos2d::GLViewImpl::_pixelFormat
+//                                         depthFormat: cocos2d::GLViewImpl::_depthFormat
+//                                  preserveBackbuffer: NO
+//                                          sharegroup: nil
+//                                       multiSampling: NO
+//                                     numberOfSamples: 0 ];
+    
     CCEAGLView *eaglView = [CCEAGLView viewWithFrame: [UIScreen mainScreen].bounds
-                                         pixelFormat: (__bridge NSString *)cocos2d::GLViewImpl::_pixelFormat
+                                         pixelFormat: (__bridge NSString *)kEAGLColorFormatRGBA8
                                          depthFormat: cocos2d::GLViewImpl::_depthFormat
                                   preserveBackbuffer: NO
                                           sharegroup: nil
@@ -53,6 +61,10 @@
     
     // Enable or disable multiple touches
     [eaglView setMultipleTouchEnabled:NO];
+    
+    eaglView.exclusiveTouch = YES;
+    eaglView.backgroundColor = [UIColor clearColor];
+    eaglView.opaque = NO;
     
     // Set EAGLView as view of RootViewController
     self.view = eaglView;
@@ -71,16 +83,23 @@
     [super viewDidDisappear:animated];
 }
 
+/**
+ *   加上这句修改下面的竖屏了
+ */
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsPortrait( interfaceOrientation );
+}
 
 // For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
+//默认为UIInterfaceOrientationMaskPortrait
 #ifdef __IPHONE_6_0
 - (NSUInteger) supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    return UIInterfaceOrientationMaskPortrait;
 }
 #endif
 
 - (BOOL) shouldAutorotate {
-    return YES;
+    return NO;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {

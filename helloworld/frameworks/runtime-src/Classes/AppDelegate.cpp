@@ -93,7 +93,9 @@ bool AppDelegate::applicationDidFinishLaunching()
         glview = cocos2d::GLViewImpl::createWithRect("helloworld", Rect(0,0,960,640));
 #endif
         director->setOpenGLView(glview);
-}
+        
+        CCLOG("applicationDidFinishLaunching");
+    }
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
@@ -189,6 +191,10 @@ void AppDelegate::applicationDidEnterBackground()
     auto director = Director::getInstance();
     director->stopAnimation();
     director->getEventDispatcher()->dispatchCustomEvent("game_on_hide");
+    
+    
+    CCLOG("applicationDidEnterBackground");
+
 
 #if USE_AUDIO_ENGINE
     AudioEngine::pauseAll();
@@ -204,6 +210,9 @@ void AppDelegate::applicationWillEnterForeground()
     auto director = Director::getInstance();
     director->startAnimation();
     director->getEventDispatcher()->dispatchCustomEvent("game_on_show");
+    
+    CCLOG("applicationWillEnterForeground");
+
 
 #if USE_AUDIO_ENGINE
     AudioEngine::resumeAll();
