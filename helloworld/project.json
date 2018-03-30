@@ -14,6 +14,21 @@
     "jsList" : [
         "src/resource.js",
         "src/scene/MenuScene.js",
+        "src/scene/AboutScene.js",
+        "src/scene/GameScene.js",
+                
+        "src/gameObject/Plane.js",
+        "src/gameObject/Bullet.js",
+        "src/gameObject/Enemy.js",
+        "src/gameObject/Bullets/DefaultBullet.js",
+        "src/gameObject/Enemies/Alpha.js",
+        "src/gameObject/Enemies/Beta.js",
+        "src/gameObject/Enemies/Gamma.js",
+        
+        "src/layer/GameInfo.js",
+                
+        "src/manager/EnemyManager.js",
+                
         "src/app.js"
     ]
 }

@@ -82,6 +82,7 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
 //        cc.director.runScene(new HelloWorldScene());
+        cc.game.enemyManager = new EnemyManager();
         cc.director.runScene(new MenuScene());
 //        cc.director.setDisplayStats(true);//不展示FPS
     }, this);
