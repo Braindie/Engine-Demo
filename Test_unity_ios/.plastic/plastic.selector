@@ -1,0 +1,4 @@
+repository "Test_unity_ios@Brainew@cloud"
+  path "/"
+    br "/main"
+    co "/main"
